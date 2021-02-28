@@ -1,0 +1,41 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay" menuId="first" (click)="getUser()">
+      <ion-header>
+        <ion-list-header *ngIf="usuarios">
+            <img  routerLink="/perfil" src="http://apiVehiculos.test/img/usuarios/{{usuarios.img}}">
+          <div id="datos" color="success"  >
+            <div id="clientes">
+              <p>{{ usuarios.clientes.Nombre }}</p>
+              <p>4444</p>
+            </div>
+            <div id="usuario">
+              <p>{{usuarios.nombre}} {{usuarios.apellidos}}</p> 
+              <p>{{ usuarios.login }}</p>
+              <p>{{ usuarios.rol }}</p>
+            </div>    
+          </div>
+        </ion-list-header>
+      </ion-header>
+      <ion-content> 
+        <ion-list id="inbox-list">
+          <ion-menu-toggle auto-hide="false" *ngFor="let c of categorias; let i = index" 
+                          (click)="mostrarVehiculos(c.Categoria)">
+            <ion-item>
+              <ion-thumbnail slot="start">
+                <ion-img src="http://apivehiculos.test/img/categorias/{{c.img}}"></ion-img>
+              </ion-thumbnail>
+              <ion-label>
+                {{c.Nombre}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+        
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content" name="primary"></ion-router-outlet>
+
+  </ion-split-pane>
+  
+</ion-app>

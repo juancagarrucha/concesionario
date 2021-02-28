@@ -1,0 +1,21 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+<ion-content>
+  <h3>Categorias de vehiculos</h3>
+  
+  <ion-list *ngIf="categorias" >
+      <ion-card *ngFor="let c of categorias">
+        <ion-card-header [routerLink]="[ '/vehiculos', c.Categoria]" >
+        <!--  <img src="{{ images }}/{{ g.Imagen }}"> -->
+          <img [src] = "c.img | viewImage: 'categorias'">
+          <ion-card-title >{{ c.Categoria }}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+  </ion-list>
+</ion-content>

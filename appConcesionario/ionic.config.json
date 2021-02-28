@@ -1,0 +1,7 @@
+{
+  "name": "appConcesionario",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
