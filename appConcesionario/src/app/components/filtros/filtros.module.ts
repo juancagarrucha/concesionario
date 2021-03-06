@@ -1,3 +1,4 @@
+import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -11,6 +12,7 @@ import { VehiculosComponent } from './vehiculos/vehiculos.component';
   exports: [FiltrosComponent, VehiculosComponent],
   imports: [
     CommonModule,
+    IonicModule,
     FiltrosRoutingModule
   ]
 })

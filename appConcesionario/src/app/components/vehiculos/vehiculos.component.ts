@@ -16,14 +16,21 @@ export class VehiculosComponent implements OnInit {
   public respuesta: MsnApiCategorias;
   public categoria: ICategoria;
   public idcategoria: string;
-  public vehiculos: IVehiculo[];
+  public vehiculos: IVehiculo;
   public images = `${URL}/img/vehiculos`;
    rol: string;
   // tslint:disable-next-line:no-input-rename
  // @Input('idGama') idgama: string;
+ public bread: [
+  {
+    'nombre': 'Categorias', 'clase': 'active', 'link': [ '/', 'categorias']
+  }
+];
 
-  constructor(private route: ActivatedRoute,  private router: Router,
-              private gService: CategoriasService, public uService: UsuariosService,
+  constructor(private route: ActivatedRoute, 
+              private router: Router,
+              private cService: CategoriasService, 
+              public uService: UsuariosService,
               public configService: ConfigService ) { 
     this.idcategoria = this.route.snapshot.paramMap.get('categoria');
     console.log(this.idcategoria);
@@ -33,12 +40,13 @@ export class VehiculosComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.respuesta = await this.gService.getVehiculos(this.idcategoria);
+    this.respuesta = await this.cService.getVehiculos(this.idcategoria);
     if (this.respuesta.status == 'success'){
+      console.log(this.respuesta.data);
       this.categoria = this.respuesta.data;
     }
 
-    this.gService.vehiculosStorageObservable
+    this.cService.vehiculosStorageObservable
       .subscribe (respuesta => {
         this.vehiculos = respuesta;
         console.log (this.vehiculos);
@@ -52,7 +60,7 @@ export class VehiculosComponent implements OnInit {
 
     this.uService.userStorageObservable
       .subscribe ( data => {
-    //    this.rol = data.rol;
+        this.rol = data.rol;
         
       });
   }

@@ -8,7 +8,7 @@ import { environment } from '../../../../environments/environment.prod';
 const URL = environment.url;
 
 @Component({
-  selector: 'app-productosgama',
+  selector: 'app-vehiculos',
   templateUrl: './vehiculos.component.html',
   styleUrls: ['./vehiculos.component.scss'],
 })
@@ -29,9 +29,10 @@ export class VehiculosComponent implements OnInit {
 
   async ngOnInit() {
     this.idcategoria = this.route.snapshot.paramMap.get('id');
-    let respuesta:MsnApiCategorias = await this.cService.getVehiculos(this.idcategoria);
+    let respuesta= await this.cService.getVehiculos(this.idcategoria);
     
     if (respuesta.status == 'success'){
+      console.log(respuesta.data);
       this.categoria = respuesta.data;
     }
   }

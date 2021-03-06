@@ -6,7 +6,6 @@ use App\Http\Controllers\CategoriasController;
 
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('categorias', [CategoriasController::class, 'index']);
-        Route::get('categorias/{id}/vehiculos', [CategoriasController::class,'getVehiculos']);      
     });
 
     Route::group(['middleware' => 'auth:api'], function () {
@@ -18,3 +17,4 @@ use App\Http\Controllers\CategoriasController;
 });
 
     Route::get('vehiculos/{id}/detalle', [CategoriasController::class,'getDetalleVehiculos']);
+    Route::get('categorias/{id}/vehiculos', [CategoriasController::class,'getVehiculos']);      

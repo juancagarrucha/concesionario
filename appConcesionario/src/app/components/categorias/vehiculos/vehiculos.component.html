@@ -22,11 +22,11 @@
   </ion-grid>
 
   <ion-list *ngIf="categoria" >
-    <ion-card *ngFor="let vehiculos of categoria.vehiculos">
+    <ion-card *ngFor="let vehiculos of categoria">
       <ion-card-header>
       <!--  <img *ngIf="producto.imagen"  src="{{ images }}/{{ producto.imagen }}"> -->
         <img *ngIf="vehiculos.img" [src] = "vehiculos.img | viewImage: 'vehiculos'">
-        <ion-card-title [routerLink]="[ '/tabs/categorias/vehiculos', vehiculos.id]" >
+        <ion-card-title [routerLink]="[ '/tabs/categorias/detallevehiculos', vehiculos.id]" >
             {{ vehiculos.nombre }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>

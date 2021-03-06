@@ -5,8 +5,9 @@ import { CategoriasComponent } from './categorias/categorias.component';
 import { VehiculosComponent } from './vehiculos/vehiculos.component';
 
 const routes: Routes = [
-  { path: 'categorias', component: CategoriasComponent, outlet: 'rfiltros' },
-  { path: 'vehiculos', component: VehiculosComponent, outlet: 'rfiltros' },
+  { path: '', redirectTo: '/categorias', pathMatch: 'full' },
+  { path: 'categorias', component: CategoriasComponent, outlet: 'secondary' },
+  { path: 'vehiculos', component: VehiculosComponent, outlet: 'secondary' },
   
 
 ];

@@ -17,7 +17,7 @@ class CategoriasController extends Controller
      */
 
     public function getVehiculos($id){
-        $vehiculos = Categorias::with('vehiculos')->where('categoria', '=', $id)->get();
+        $vehiculos = vehiculos::with('miscategorias')->where('categoria', '=', $id)->get();
         return  response()->json([
             'status' => 'success',
             'message' => 'Vehiculos de la Categoria '. $id ,

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ICategoria } from 'src/app/interfaces/VehiculosInterface';
+import { CategoriasService } from 'src/app/services/categorias.service';
 
 @Component({
   selector: 'app-categorias',
@@ -6,13 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categorias.component.scss'],
 })
 export class CategoriasComponent implements OnInit {
-  public categorias = [
-    { val: 'Todas', isChecked: true },
-    { val: 'Sedan', isChecked: false },
-    { val: '4x4', isChecked: false }
-  ];
-  constructor() { }
+  public categorias: ICategoria;
+  
+  constructor(private gamasService: CategoriasService) { 
+    
+  }
+  async ionViewWillEnter(){
+    
+  }
+  async ngOnInit() {
+    
+  }
 
-  ngOnInit() {}
+  
 
 }

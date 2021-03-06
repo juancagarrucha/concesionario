@@ -10,9 +10,10 @@ const URL = environment.url;
 @Injectable({
   providedIn: 'root'
 })
-export class VehiculosService { 
+export class VehiculosService {
+  
   respuesta : MsnApiVehiculos;
-  private vehiculosStorage = new Subject <IVehiculo[]>();
+  private vehiculosStorage = new Subject <IVehiculo>();
   public vehiculosStorageObservable = this.vehiculosStorage.asObservable();
 
 

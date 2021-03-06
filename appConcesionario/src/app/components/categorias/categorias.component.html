@@ -2,19 +2,23 @@
   <app-header></app-header>
 </ion-header>
 <ion-content>
+  <ion-item>
+    <ion-button *ngIf="configService.isClickConfig">
+      Nueva Categoria
+    </ion-button>
+  </ion-item>
   <h3>Categorias de vehiculos</h3>
   
-  <ion-list *ngIf="categorias" >
+  <ion-list >
       <ion-card *ngFor="let c of categorias">
-        <ion-card-header [routerLink]="[ '/vehiculos', c.Categoria]" >
+        <ion-card-header [routerLink]="[ 'vehiculos', c.nombre]" >
         <!--  <img src="{{ images }}/{{ g.Imagen }}"> -->
           <img [src] = "c.img | viewImage: 'categorias'">
-          <ion-card-title >{{ c.Categoria }}</ion-card-title>
+          <ion-card-title >{{ c.nombre }}</ion-card-title>
         </ion-card-header>
       
         <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          {{ c.descripcion}}
         </ion-card-content>
       </ion-card>
   </ion-list>

@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'filters',
+    loadChildren: () => import('./components/filtros/filtros.module').then( m => m.FiltrosModule)
   }
 
 ];

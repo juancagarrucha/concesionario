@@ -1,9 +1,16 @@
-
 <ion-header>
   <app-header ></app-header>
 </ion-header>
-<ion-content>
-<p>
-  producto works! {{ codvehiculo }}
-</p>
+<ion-content *ngIf="vehiculo">
+  <h3>Detalle verhiculo </h3>
+   
+    <ion-item  *ngIf="configService.isClickConfig">
+      <ion-icon [routerLink]="[ '/tabs/categorias/detallevehiculos/edit/',vehiculo.id]" 
+      color="primary" slot="end" name="create"></ion-icon>
+    </ion-item>  
+    <ion-item>
+      <ion-input required readonly name="nombre"  type="text" [(ngModel)]="vehiculo.nombre"></ion-input>
+    </ion-item>
+    
+
 </ion-content>

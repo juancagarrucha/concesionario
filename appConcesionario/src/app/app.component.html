@@ -17,21 +17,10 @@
           </div>
         </ion-list-header>
       </ion-header>
-      <ion-content> 
-        <ion-list id="inbox-list">
-          <ion-menu-toggle auto-hide="false" *ngFor="let c of categorias; let i = index" 
-                          (click)="mostrarVehiculos(c.Categoria)">
-            <ion-item>
-              <ion-thumbnail slot="start">
-                <ion-img src="http://apivehiculos.test/img/categorias/{{c.img}}"></ion-img>
-              </ion-thumbnail>
-              <ion-label>
-                {{c.Nombre}}
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-        
+      <ion-content>   
+        <ion-router-outlet name="secondary">
+          fgdfgd
+        </ion-router-outlet>
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content" name="primary"></ion-router-outlet>
