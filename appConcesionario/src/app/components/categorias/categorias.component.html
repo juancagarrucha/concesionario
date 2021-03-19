@@ -3,11 +3,11 @@
 </ion-header>
 <ion-content>
   <ion-item>
-    <ion-button *ngIf="configService.isClickConfig">
+    <ion-button *ngIf="configService.isClickConfig" routerLink= "/agregarc">
       Nueva Categoria
     </ion-button>
   </ion-item>
-  <h3>Categorias de vehiculos</h3>
+  <h3>Categorias de nuestros vehiculos</h3>
   
   <ion-list >
       <ion-card *ngFor="let c of categorias">

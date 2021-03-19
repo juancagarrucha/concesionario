@@ -33,11 +33,13 @@ Route::post('registro', [AuthController::class, 'signup']);
 Route::post('categorias', [CategoriasController::class, 'categorias']);
 
 Route::group(['middleware' => 'auth:api'], function () {
+
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('user', [AuthController::class, 'getUser']);
     Route::group(['middleware' => 'rol.admin'], function () {
         Route::get('vehiculos/{id}/remove', [VehiculosController::class,'destroy']);
             
 });
+Route::post('agregarc', [CategoriasController::class, 'agregarc']);
 
 });

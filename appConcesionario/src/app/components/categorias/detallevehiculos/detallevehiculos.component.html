@@ -1,11 +1,11 @@
 <ion-header>
   <app-header ></app-header>
 </ion-header>
-<h3>Detalle vehiculo </h3>
+<h3 *ngIf="vehiculo"> Detalle del Vehiculo {{vehiculo.nombre}} </h3>
 <ion-row>
   <ion-col offset="6" size="6">
     <ion-item id="bread">
-      <span class="active" [routerLink]="['/' ,'categorias']">
+      <span class="active" [routerLink]="['/tabs' ,'categorias']">
           Categorias 
       </span>
     </ion-item>
@@ -15,16 +15,24 @@
   
    
     <ion-item  *ngIf="configService.isClickConfig">
-      <ion-icon [routerLink]="[ '/tabs/categorias/detallevehiculos/edit/',vehiculo.id]" 
-      color="primary" slot="end" name="create"></ion-icon>
+     <!--  <ion-icon [routerLink]="[ '/tabs/categorias/detallevehiculos/edit/',vehiculo.id]" color="primary" slot="end" name="create"></ion-icon>   -->
       <ion-icon (click)="eliminarvehiculo(vehiculo.id)" color="primary" slot="end" name="trash-outline"></ion-icon>
     </ion-item> 
+    <ion-card>
+      <ion-card-header>
+        <img *ngIf="vehiculo.img" [src] = "vehiculo.img | viewImage: 'vehiculos'">
+        <ion-card-title>Nombre: {{ vehiculo.nombre }}</ion-card-title>
+        <ion-card-subtitle>Categoria: {{ vehiculo.Categoria }}</ion-card-subtitle>
+        <ion-card-subtitle>Precio: {{ vehiculo.precio }}€</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        Marca: {{ vehiculo.marca }} 
+      </ion-card-content>
+    </ion-card>
+       <!-- 
     <ion-item>
       <ion-input required readonly name="nombre"  type="text" [(ngModel)]="vehiculo.nombre"></ion-input>
     </ion-item> 
-    <!-- <ion-item *ngIf="vehiculo">
-      <span>{{vehiculo.nombre}}</span>
-    </ion-item>
      -->
 
 </ion-content>

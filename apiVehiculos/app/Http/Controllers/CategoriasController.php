@@ -7,6 +7,7 @@ use App\Models\categorias;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\storeCategoriasPost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CategoriasController extends Controller
 {
@@ -15,6 +16,37 @@ class CategoriasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function agregarc(Request $request)
+    {
+        $rules = [
+            'nombre'        => 'required',
+            'descripcion'   => 'required',
+            'img'               => 'required'
+        ];
+
+        #Paso1-. Validación de los campos del usuario
+        $input = $request->all();
+        $validator = Validator::make($input, $rules);
+//        dd($validator->errors());
+        if ($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Error al rellenar los campos',
+                'errors'=> $validator->errors()
+            ], 200);
+        }
+
+        $categoria = categorias::create(array(
+            'nombre'        => $request->input('nombre'),
+            'descripcion'   => $request->input('descripcion'),
+            'img'               => $request->input('img')
+        ));
+
+        return response()->json([
+            'status' => 'Correcto.',
+            'message' => 'Categoria agregada.'], 201);
+    }
 
     public function getVehiculos($id){
         $vehiculos = vehiculos::with('miscategorias')->where('categoria', '=', $id)->get();

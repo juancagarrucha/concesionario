@@ -1,6 +1,5 @@
 import { UiServiceService } from 'src/app/services/ui-service.service';
-import { ICategoria } from './../../../interfaces/VehiculosInterface';
-import { IVehiculo } from 'src/app/interfaces/VehiculosInterface';
+import { IVehiculo, ICategoria } from 'src/app/interfaces/VehiculosInterface';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoriasService } from 'src/app/services/categorias.service';

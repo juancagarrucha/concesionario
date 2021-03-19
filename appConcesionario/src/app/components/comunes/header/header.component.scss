@@ -1,5 +1,7 @@
 ion-toolbar {
-    background-color: rgba(148,193,31,1) !important;
+    --background:none;
+    background-color: rgb(4, 62, 221) !important;
+    color: white;
 }
 
 ion-img {

@@ -3,7 +3,7 @@
 </ion-header>
 <ion-content>
   <ion-item>
-    <h3>Listado de Vehiculos </h3>
+    <h3  >Listado de la categoría {{idcategoria}}</h3>
     <ion-button slot="end" *ngIf="configService.isClickConfig">
       Nuevo Vehiculo
     </ion-button>
@@ -13,17 +13,12 @@
     <ion-row>
       <ion-col offset="6" size="6">
         <ion-item id="bread">
-          <span class="active" [routerLink]="['/' ,'categorias']">
+          <span class="active" [routerLink]="['/tabs' ,'categorias']">
               Categorias 
           </span>
           <span > > </span>
           <span > {{ idcategoria }} </span>
         </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col offset="2" size="10" *ngIf="filterPService.id" >
-        <h3>Vehiculos {{ idcategoria }}</h3>
       </ion-col>
     </ion-row>
   </ion-grid>

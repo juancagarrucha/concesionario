@@ -1,3 +1,4 @@
+import { AgregarcComponent } from './../agregarc/agregarc.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComunesRoutingModule } from './comunes-routing.module';
@@ -12,8 +13,8 @@ import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
-  declarations: [HeaderComponent, PortadaComponent, PerfilComponent, LoginComponent, SignupComponent],
-  exports: [HeaderComponent, PortadaComponent, PerfilComponent, LoginComponent, SignupComponent],
+  declarations: [HeaderComponent,AgregarcComponent, PortadaComponent, PerfilComponent, LoginComponent, SignupComponent],
+  exports: [HeaderComponent,AgregarcComponent, PortadaComponent, PerfilComponent, LoginComponent, SignupComponent],
   imports: [
     CommonModule,
     IonicModule,

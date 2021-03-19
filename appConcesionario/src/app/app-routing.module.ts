@@ -1,3 +1,4 @@
+import { AgregarcComponent } from './components/agregarc/agregarc.component';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { PortadaComponent } from './components/comunes/portada/portada.component';
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: 'home', component: PortadaComponent},
   { path: 'perfil', component: PerfilComponent },
   { path: 'login', component: LoginComponent},
+  { path:  'agregarc', component: AgregarcComponent},
   { path: 'signup', component: SignupComponent},
   {
     path: 'categorias', outlet: 'primary',

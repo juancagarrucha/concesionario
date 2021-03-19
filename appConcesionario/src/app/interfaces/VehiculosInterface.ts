@@ -22,6 +22,13 @@ export interface MsnApiCategorias {
     data?: ICategoria;
 //    data?: G;
 }
+export interface MsnApiAgregarc {
+    status?: string;
+    message?: string;
+    errors?: string;
+    data?: ICategoria;
+//    data?: G;
+}
 export interface MsnApiVehiculos {
     status?: string;
     message?: string;

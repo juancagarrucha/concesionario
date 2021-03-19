@@ -5,7 +5,8 @@ ion-item img{
   ion-list-header{
     display: flex;
     flex-flow: row nowrap;
-    background-color: rgba(148,193,31,.7);
+    background-color: rgba(10, 135, 238, 0.7);
+    color: white;
   }
   ion-list-header img {
     width: 20%;
@@ -27,7 +28,7 @@ ion-item img{
     display: flex;
     flex-flow: column nowrap;
     align-items: flex-end;
-    color: black;
+    color: white;
     font-style: italic;
     padding: 3px;
   }
