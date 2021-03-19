@@ -11,7 +11,7 @@
   
   <ion-list >
       <ion-card *ngFor="let c of categorias">
-        <ion-card-header [routerLink]="[ 'vehiculos', c.nombre]" >
+        <ion-card-header [routerLink]="['/tabs/categorias/vehiculos/', c.nombre]" >
         <!--  <img src="{{ images }}/{{ g.Imagen }}"> -->
           <img [src] = "c.img | viewImage: 'categorias'">
           <ion-card-title >{{ c.nombre }}</ion-card-title>

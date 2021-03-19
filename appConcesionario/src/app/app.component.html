@@ -7,7 +7,7 @@
           <div id="datos" color="success"  >
             <div id="clientes">
               <p>{{ usuarios.clientes.Nombre }}</p>
-              <p>4444</p>
+              <p></p>
             </div>
             <div id="usuario">
               <p>{{usuarios.nombre}} {{usuarios.apellidos}}</p> 
@@ -19,11 +19,13 @@
       </ion-header>
       <ion-content>   
         <ion-router-outlet name="secondary">
-          fgdfgd
+          
         </ion-router-outlet>
       </ion-content>
     </ion-menu>
-    <ion-router-outlet id="main-content" name="primary"></ion-router-outlet>
+    <ion-router-outlet name="primary" id="main-content">
+      
+    </ion-router-outlet>
 
   </ion-split-pane>
   

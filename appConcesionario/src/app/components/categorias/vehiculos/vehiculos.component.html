@@ -2,6 +2,13 @@
   <app-header></app-header>
 </ion-header>
 <ion-content>
+  <ion-item>
+    <h3>Listado de Vehiculos </h3>
+    <ion-button slot="end" *ngIf="configService.isClickConfig">
+      Nuevo Vehiculo
+    </ion-button>
+  </ion-item>
+  
    <ion-grid>
     <ion-row>
       <ion-col offset="6" size="6">
@@ -15,22 +22,22 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col offset="2" size="10">
-        <h3>Vehiculos de {{ idcategoria }}</h3>
+      <ion-col offset="2" size="10" *ngIf="filterPService.id" >
+        <h3>Vehiculos {{ idcategoria }}</h3>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <ion-list *ngIf="categoria" >
-    <ion-card *ngFor="let vehiculos of categoria">
+  <ion-list *ngIf="vehiculos" >
+    <ion-card *ngFor="let vehiculo of vehiculos">
       <ion-card-header>
       <!--  <img *ngIf="producto.imagen"  src="{{ images }}/{{ producto.imagen }}"> -->
-        <img *ngIf="vehiculos.img" [src] = "vehiculos.img | viewImage: 'vehiculos'">
-        <ion-card-title [routerLink]="[ '/tabs/categorias/detallevehiculos', vehiculos.id]" >
-            {{ vehiculos.nombre }}</ion-card-title>
+        <img *ngIf="vehiculo.img" [src] = "vehiculo.img | viewImage: 'vehiculos'">
+        <ion-card-title [routerLink]="[ '/tabs/categorias/detallevehiculos', vehiculo.id]" >
+            {{ vehiculo.nombre }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        {{ vehiculos.marca | truncate: 100 }} 
+        {{ vehiculo.marca }} 
       </ion-card-content>
     </ion-card>
   </ion-list>

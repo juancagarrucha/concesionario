@@ -7,5 +7,5 @@ interface IPrecio {
 export interface IFiltrosVehiculos {
  //   precio?: IPrecio;
     categorias: string[];
-    precios: number[];
+    precios?: number[];
 }

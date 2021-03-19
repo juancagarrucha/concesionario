@@ -1,4 +1,6 @@
-import { IVehiculo } from './../../../../../../concesionario/appConcesionario/src/app/interfaces/VehiculosInterface';
+import { UiServiceService } from 'src/app/services/ui-service.service';
+import { ICategoria } from './../../../interfaces/VehiculosInterface';
+import { IVehiculo } from 'src/app/interfaces/VehiculosInterface';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoriasService } from 'src/app/services/categorias.service';
@@ -15,9 +17,13 @@ export class DetallevehiculosComponent implements OnInit {
   public codvehiculo: string;
   public accion: string;
   public vehiculo: IVehiculo;
+  categorias: ICategoria;
+  
   constructor(private route: ActivatedRoute, private cServices: CategoriasService,
               private vehiculosService:VehiculosService,
-              public configService: ConfigService) { }
+              public configService: ConfigService, public UiService: UiServiceService) {
+                console.log('detalle');
+               }
 
   public editar(){
     this.read = !this.read;
@@ -32,14 +38,17 @@ export class DetallevehiculosComponent implements OnInit {
   async ngOnInit() {
     this.codvehiculo = this.route.snapshot.paramMap.get('id');
     this.accion = this.route.snapshot.paramMap.get('accion');
-
+    let respuesta= await this.vehiculosService.showVehiculos(this.codvehiculo);
     console.log(this.codvehiculo);
-    let respuesta = await this.vehiculosService.showVehiculos(this.codvehiculo);
+    // let respuesta = await this.vehiculosService.showVehiculos(this.codvehiculo);
     console.log(respuesta);
     if (respuesta.status == 'success'){
-      this.vehiculo = respuesta.data[0];
+      this.vehiculo = respuesta.data;
       console.log(this.vehiculo);
     }
+  }
+  public eliminarvehiculo(id){
+    this.UiService.alertaborrado(id);
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigService } from 'src/app/services/config.service';
 
 @Component({
   selector: 'app-tabs',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsPage implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(public configService: ConfigService) {
+    
   }
+
+ ngOnInit() {
+   console.log(this.configService.isAdmin, this.configService.iconEdit);
+   //this.configService.edicion();
+ }
 
 }

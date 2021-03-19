@@ -3,7 +3,7 @@ export interface IVehiculo {
     nombre?: string;
     marca?: string;
     Categoria?: ICategoria;
-    img: string;
+    img?: string;
     precio?: number;
 }
 export interface ICategoria {

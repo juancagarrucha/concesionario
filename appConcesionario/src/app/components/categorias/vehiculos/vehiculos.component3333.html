@@ -1,0 +1,34 @@
+<ion-header>
+  <app-header ></app-header>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <h3>Listado de Vehiculos </h3>
+    <ion-button slot="end" *ngIf="configService.isClickConfig">
+      Nuevo Vehiculo
+    </ion-button>
+  </ion-item>
+  
+  <ion-list *ngIf="vehiculos" >
+    <ion-card *ngFor="let vehiculo of vehiculos">
+      <ion-item class="herramientas" *ngIf="configService.isClickConfig">
+        <ion-icon [routerLink]="[ '/tabs/categorias/detallevehiculos/edit/',vehiculo.id]" 
+                  color="primary" slot="end" name="create"></ion-icon>
+        <ion-icon color="primary" slot="end" name="trash"></ion-icon>
+        <ion-icon color="primary" slot="end" name="close"></ion-icon>
+      </ion-item>
+      <ion-card-header [routerLink]="[ '/tabs/categorias/detallevehiculos/',vehiculo.id,'S' ]">
+      <!--  <img *ngIf="producto.imagen"  src="{{ images }}/{{ producto.imagen }}"> -->
+        <img *ngIf="vehiculo.img" [src] = "vehiculo.img | viewImage: 'vehiculos'">
+        <ion-card-title>
+           <ion-input type="text" name="nombre" [value]="vehiculo.nombre" [(ngModel)]="vehiculo.nombre"> {{vehiculo.nombre }}</ion-input>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ vehiculo.marca }} 
+        
+      </ion-card-content>
+      
+    </ion-card>
+  </ion-list>
+</ion-content>

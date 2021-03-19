@@ -10,9 +10,12 @@ const routes: Routes = [
   {
     path: '',
     component: TabsPage,
+    outlet: 'primary',
     children: [
       { path: '', loadChildren: () => import('../../components/comunes/comunes.module').then(m => m.ComunesModule) },
-      { path: 'categorias', loadChildren: () => import('../../components/categorias/categorias.module').then(m => m.CategoriasModule)   }
+      { path: 'categorias', loadChildren: () => import('../../components/categorias/categorias.module').then(m => m.CategoriasModule)   },
+      { path: 'vehiculos', loadChildren: () => import('../../components/categorias/categorias.module').then( m => m.CategoriasModule)
+      },
     ]
   }
 ];

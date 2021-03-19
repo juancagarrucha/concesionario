@@ -63,11 +63,13 @@ export class VehiculosComponent implements OnInit {
   }
 
   async aplicar(){
+
      this.IFiltros.categorias = this.items;
 
       console.log (this.IFiltros);
       let respuesta = await this.filterPService.getFilter(this.IFiltros);
+      this.filterPService.id = false;
      //  console.log(respuesta);
-       this.items = [];
+      //  this.items = [];
   }
 }

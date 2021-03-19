@@ -1,3 +1,4 @@
+import { UsuariosService } from './../usuarios.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
@@ -17,16 +18,18 @@ export class VehiculosService {
   public vehiculosStorageObservable = this.vehiculosStorage.asObservable();
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public uService: UsuariosService) { }
 
-  getFilter(filtros: IFiltrosVehiculos): Promise<MsnApiVehiculos>{
+  async getFilter(filtros: IFiltrosVehiculos): Promise<MsnApiVehiculos>{
+    const token = await this.uService.getToken();
     const httpOptions = {
       headers: new HttpHeaders({
-        'Accept' : 'application/json'
+        'Accept' : 'application/json',
+        'Authorization' : 'Bearer ' + token,
       })
     };
     let data = JSON.stringify(filtros) ;
-    const ruta = `${ URL }/vehiculos/filters`;
+    const ruta = `${ URL }vehiculos/filters`;
     console.log(data);
     return new Promise (resolve => {
    //   this.http.post<MsnApiProductos>(ruta, {data})

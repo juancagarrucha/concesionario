@@ -28,7 +28,7 @@ export class CategoriasComponent implements OnInit {
 
     this.categoria = this.route.snapshot.paramMap.get('id');
     console.log (this.categoria);
-    console.log(this.categoriasService.getCategorias());
+    this.Router.navigate(['/filters', { outlets: { secondary: ['categorias'] } }]);
    }
 
   async ngOnInit() {

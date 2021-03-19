@@ -1,10 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { promise } from 'selenium-webdriver';
+import { environment } from '../../environments/environment';
 import { IFiltrosVehiculos } from '../interfaces/FiltrosInterfaces';
 import { IVehiculo, MsnApiVehiculos } from '../interfaces/VehiculosInterface';
 import { UsuariosService } from './usuarios.service';
-
+const URL = environment.url;
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +17,7 @@ export class VehiculosService {
   public vehiculosStorageObservable = this.vehiculosStorage.asObservable();
   private httpOptions: any ;
   public respuesta: MsnApiVehiculos;
+  public id:boolean=true;
 
   constructor(private http: HttpClient, private uService: UsuariosService) { }
   getFilter(filtros: IFiltrosVehiculos): Promise<MsnApiVehiculos>{
@@ -24,8 +27,8 @@ export class VehiculosService {
       })
     };
     let data = JSON.stringify(filtros) ;
-    const ruta = `${ URL }/vehiculos/filters`;
-    console.log(data);
+    const ruta = `${ URL }vehiculos/filters`;
+    console.log(ruta, data);
     return new Promise (resolve => {
    //   this.http.post<MsnApiProductos>(ruta, {data})
       this.http.post<MsnApiVehiculos>( ruta, {data} )
@@ -42,6 +45,7 @@ export class VehiculosService {
     console.log('Id = ', id);
     const token = await this.uService.getToken();
     const ruta = `${ URL }vehiculos/${id}/detalle`;
+    console.log(ruta)
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept' : 'application/json',
@@ -52,9 +56,27 @@ export class VehiculosService {
       this.http.get<MsnApiVehiculos>(ruta, httpOptions)
         .subscribe(data => {
           this.respuesta = data;
+          console.log(this.respuesta);
           resolve(this.respuesta);
         });
     });
     
+  }
+  async borrar(id):Promise<MsnApiVehiculos>{
+    const token = await this.uService.getToken();
+    const ruta = `${ URL }vehiculos/${id}/remove`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept' : 'application/json',
+        'Authorization' : 'Bearer ' + token,
+      })
+    };
+    return new Promise ( resolve => {
+      this.http.get<MsnApiVehiculos>(ruta, httpOptions)
+        .subscribe(data => {
+          console.log(data);
+          resolve(data);
+        });
+    });
   }
 }

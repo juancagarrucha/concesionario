@@ -9,6 +9,18 @@ use Illuminate\Http\Request;
 
 class VehiculosController extends Controller
 {
+
+    public function destroy($id){
+       $data = vehiculos::destroy('id','=', $id);
+       return  response()->json([
+        'status' => 'success',
+        'message' => 'Vehiculo '. $id .' borrado correctamente ',
+        'code' => 401,
+        'data' => $data
+    ]);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -82,8 +94,5 @@ class VehiculosController extends Controller
      * @param  \App\Models\vehiculos  $vehiculos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(vehiculos $vehiculos)
-    {
-        //
-    }
+    
 }

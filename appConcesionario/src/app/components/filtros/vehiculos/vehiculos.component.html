@@ -1,14 +1,14 @@
 
 <ion-card>
   <ion-card-header>
-    <ion-card-subtitle>Filtros vehiculos</ion-card-subtitle>
+    <ion-card-subtitle>Filtros de Vehiculos</ion-card-subtitle>
   </ion-card-header>
   <ion-card-content class="ion-padding" *ngIf="categorias">
       <div id="datos">
         <ion-label id="min"><span>min: </span>{{ IFiltros.precios[0] }}</ion-label>
         <ion-label id="max"><span>max: </span>{{ IFiltros.precios[1] }}</ion-label>
       </div>
-      <ion-range  min="10" max="800" pin="true" dual-knobs  (ionChange)="changeRange($event)">
+      <ion-range  min="10" max="100000" pin="true" dual-knobs  (ionChange)="changeRange($event)">
         <ion-icon size="small" slot="start" name="remove-outline"></ion-icon>
         <ion-icon slot="end" name="add-outline"></ion-icon>
       </ion-range>
