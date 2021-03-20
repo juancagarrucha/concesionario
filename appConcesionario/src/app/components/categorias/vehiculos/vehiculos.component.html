@@ -2,7 +2,7 @@
   <app-header></app-header>
 </ion-header>
 <ion-content>
-  <ion-item>
+  <ion-item *ngIf="filterPService.id" >
     <h3  >Listado de la categoría {{idcategoria}}</h3>
     <ion-button slot="end" *ngIf="configService.isClickConfig">
       Nuevo Vehiculo

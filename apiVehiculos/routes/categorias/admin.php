@@ -13,11 +13,10 @@ use App\Http\Controllers\filters\VehiculosController;
 
     Route::group(['middleware' => 'auth:api'], function () {
         Route::group(['middleware' => 'rol.admin'], function () {
-            Route::post('categorias/new', [CategoriasController::class, 'agregarc']);
             Route::post('vehiculos', [VehiculosController::class,'store']);
             Route::put('vehiculos/{vehiculo}', [VehiculosController::class,'update']);
             Route::get('vehiculos/{id}/remove', [VehiculosController::class,'destroy']);
-            Route::post('categorias/agregarc', [ArticulosController::class, 'store']);
+           
                 
     });
 

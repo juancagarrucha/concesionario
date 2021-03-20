@@ -24,7 +24,7 @@ export class VehiculosComponent implements OnInit {
   public respuesta: MsnApiVehiculos;
   public vehiculo: IVehiculo = {
     nombre: '',
-    precio: 0
+    Precio: 0
   };
   public bread: [
     {

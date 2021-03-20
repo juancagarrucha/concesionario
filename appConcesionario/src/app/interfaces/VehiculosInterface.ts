@@ -2,13 +2,13 @@ export interface IVehiculo {
     id?: number;
     nombre?: string;
     marca?: string;
-    Categoria?: ICategoria;
+    categoria?: ICategoria;
     img?: string;
-    precio?: number;
+    Precio?: number;
 }
 export interface ICategoria {
     nombre: string;
-    Descripcion: string;
+    descripcion: string;
     img: string;
     vehiculos?: IVehiculo
 }

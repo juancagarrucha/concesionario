@@ -13,7 +13,7 @@ export class AgregarcComponent implements OnInit {
 
   newcategoria: ICategoria ={
     nombre: 'otros',
-    Descripcion: 'otros',
+    descripcion: 'otros',
     img: 'otros.png'
   }
 
@@ -29,7 +29,7 @@ ngOnInit() { }
     
     const peticion = await this.cService.agregarc( this.newcategoria);
     
-    if ( peticion.status == 'success' ){
+    if ( peticion.status == 'Correcto.' ){
      this.mService.alertaInformativa( peticion.message );
      this.navController.navigateRoot('agregarc', { animated: true });
       } 

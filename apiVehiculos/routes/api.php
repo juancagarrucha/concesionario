@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth:api'], function () {
         Route::get('vehiculos/{id}/remove', [VehiculosController::class,'destroy']);
             
 });
-Route::post('agregarc', [CategoriasController::class, 'agregarc']);
+
 
 });
+Route::post('agregarc', [CategoriasController::class, 'agregarc']);

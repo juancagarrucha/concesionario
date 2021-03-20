@@ -12,15 +12,15 @@
     <form (ngSubmit)="agregarc(fAgregarc)" #fAgregarc="ngForm"> 
             <ion-item>
               <ion-label position="floating">Nombre</ion-label>
-              <ion-input required name="categoriaid" type="text" [(ngModel)]="newcategoria.nombre"></ion-input>
+              <ion-input required name="nombre" type="text" [(ngModel)]="newcategoria.nombre"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Descripcion</ion-label>
-              <ion-input required name="nombre_categoria" type="text" [(ngModel)]="newcategoria.Descripcion"></ion-input>
+              <ion-input required name="descripcion" type="text" [(ngModel)]="newcategoria.descripcion"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Imagen</ion-label>
-              <ion-input required name="logo" type="text" [(ngModel)]="newcategoria.img"></ion-input>
+              <ion-input required name="img" type="text" [(ngModel)]="newcategoria.img"></ion-input>
             </ion-item>
 
           <ion-button expand="full" type="submit">Añadir Categoria</ion-button>
