@@ -8,7 +8,7 @@ const URL = environment.url;
 export class ViewImagePipe implements PipeTransform {
 
   transform(img: string, tipo: string): string {
-    let rutaImg = `http://apivehiculos.test/img/${tipo}/${img}`;
+    let rutaImg = `http://vehiculos.jcgg.es/vehiculos/public/img/${tipo}/${img}`;
     console.log (rutaImg);
     return rutaImg;
   }

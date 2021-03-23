@@ -4,7 +4,7 @@
 <ion-content>
   <ion-item *ngIf="filterPService.id" >
     <h3  >Listado de la categoría {{idcategoria}}</h3>
-    <ion-button slot="end" *ngIf="configService.isClickConfig">
+    <ion-button slot="end" *ngIf="configService.isClickConfig" routerLink= "/agregarvehiculo">
       Nuevo Vehiculo
     </ion-button>
   </ion-item>

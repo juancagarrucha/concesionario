@@ -29,6 +29,13 @@ export interface MsnApiAgregarc {
     data?: ICategoria;
 //    data?: G;
 }
+export interface MsnApiAgregarvehiculo {
+    status?: string;
+    message?: string;
+    errors?: string;
+    data?: IVehiculo;
+//    data?: G;
+}
 export interface MsnApiVehiculos {
     status?: string;
     message?: string;

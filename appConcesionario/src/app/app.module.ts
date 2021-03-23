@@ -1,3 +1,4 @@
+import { AgregarvehiculoComponent } from './components/agregarvehiculo/agregarvehiculo.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -16,8 +17,9 @@ import { IonicStorageModule } from '@ionic/storage';
 import { ViewImagePipe } from './pipes/view-image.pipe';
 import { TruncatePipe } from './pipes/truncate.pipe';
 
+
 @NgModule({
-  declarations: [AppComponent, ViewImagePipe, TruncatePipe],
+  declarations: [AppComponent, ViewImagePipe, TruncatePipe, AgregarvehiculoComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -25,6 +27,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     AppRoutingModule,
     HttpClientModule,
     ComunesModule,
+    ReactiveFormsModule,
     FormsModule,
     IonicStorageModule.forRoot()
   ],

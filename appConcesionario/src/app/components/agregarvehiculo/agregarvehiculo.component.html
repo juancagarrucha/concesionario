@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><h1>Agregar Vehiculo</h1></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="Volver" defaultHref="/categorias"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card-content>
+    <form (ngSubmit)="agregarvehiculo(fAgregarvehiculo)" #fAgregarvehiculo="ngForm"> 
+            <ion-item>
+              <ion-label position="floating">Id</ion-label>
+              <ion-input required name="id" type="text" [(ngModel)]="newvehiculo.id"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Nombre</ion-label>
+              <ion-input required name="nombre" type="text" [(ngModel)]="newvehiculo.nombre"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Categoria</ion-label>
+              <ion-input required name="categoria" type="text" [(ngModel)]="newvehiculo.categoria"></ion-input>
+            </ion-item>
+            <!-- <ion-item>
+              <ion-label position="floating">Precio</ion-label>
+              <ion-input required name="precio" type="text" [(ngModel)]="newvehiculo.Precio"></ion-input>
+            </ion-item> -->
+            <ion-item>
+              <ion-label position="floating">Imagen</ion-label>
+              <ion-input required name="img" type="text" [(ngModel)]="newvehiculo.img"></ion-input>
+            </ion-item>
+
+          <ion-button expand="full" type="submit">Añadir Vehiculo</ion-button>
+     </form>
+  </ion-card-content>
+</ion-content>

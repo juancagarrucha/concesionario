@@ -4,8 +4,9 @@ import { Subject } from 'rxjs';
 import { promise } from 'selenium-webdriver';
 import { environment } from '../../environments/environment';
 import { IFiltrosVehiculos } from '../interfaces/FiltrosInterfaces';
-import { IVehiculo, MsnApiVehiculos } from '../interfaces/VehiculosInterface';
+import { IVehiculo, MsnApiVehiculos,MsnApiAgregarvehiculo } from '../interfaces/VehiculosInterface';
 import { UsuariosService } from './usuarios.service';
+import { Storage } from '@ionic/storage';
 const URL = environment.url;
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,9 @@ export class VehiculosService {
   private httpOptions: any ;
   public respuesta: MsnApiVehiculos;
   public id:boolean=true;
+  public token: string = null;
 
-  constructor(private http: HttpClient, private uService: UsuariosService) { }
+  constructor(private http: HttpClient, private uService: UsuariosService, private storage:Storage) { }
   getFilter(filtros: IFiltrosVehiculos): Promise<MsnApiVehiculos>{
     const httpOptions = {
       headers: new HttpHeaders({
@@ -79,4 +81,26 @@ export class VehiculosService {
         });
     });
   }
-}
+  agregarvehiculo (vehiculos: IVehiculo): Promise<MsnApiAgregarvehiculo>{
+    console.log(vehiculos);
+  
+    const ruta = `${ URL }agregarvehiculo`;
+    const data = vehiculos;
+    console.log (ruta, data);
+  
+    return new Promise ( resolve => {
+      this.http.post<MsnApiAgregarvehiculo>(ruta, data)
+        .subscribe (respuesta => {
+          if (respuesta.status == 'success'){
+            resolve(respuesta)
+          }else{
+            this.token = null;
+            this.storage.clear();
+            resolve (respuesta);
+          }
+        });
+    });
+    } 
+    
+    }
+
