@@ -5,7 +5,8 @@
 
 export const environment = {
   production: false,
-  url: 'http://apiVehiculos.test/api/'
+  //url: 'http://apiVehiculos.test/api/'
+    url: 'http://vehiculos.jcgg.es/vehiculos/public/index.php/api/'
 };
 
 /*
