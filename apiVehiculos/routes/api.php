@@ -44,3 +44,4 @@ Route::group(['middleware' => 'auth:api'], function () {
 
 });
 Route::post('agregarc', [CategoriasController::class, 'agregarc']);
+Route::post('agregarvehiculo', [VehiculosController::class, 'agregarvehiculo']);

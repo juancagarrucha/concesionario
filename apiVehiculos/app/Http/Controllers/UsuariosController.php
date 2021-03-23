@@ -17,7 +17,7 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        $usuarios = User::with('clientes')->get();
+        $usuarios = usuarios::with('clientes')->get();
         return  response()->json($usuarios);
 
     }

@@ -6,9 +6,46 @@ use App\Models\vehiculos;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\storeVehiculosPost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class VehiculosController extends Controller
 {
+    public function agregarvehiculo(Request $request)
+    {
+        $rules = [
+            'id'        => 'required',
+            'nombre'        => 'required',
+            'categoria'        => 'required',
+            'marca'   => 'required',
+            //'precio'   => 'required',
+            'img'               => 'required'
+        ];
+
+        #Paso1-. Validación de los campos del usuario
+        $input = $request->all();
+        $validator = Validator::make($input, $rules);
+//        dd($validator->errors());
+        if ($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Error al rellenar los campos',
+                'errors'=> $validator->errors()
+            ], 200);
+        }
+
+        $vehiculo = vehiculos::create(array(
+            'id'        => $request->input('id'),
+            'nombre'        => $request->input('nombre'),
+            'marca'        => $request->input('marca'),
+            'categoria'        => $request->input('categoria'),
+            //'precio'   => $request->input('precio'),
+            'img'               => $request->input('img')
+        ));
+
+        return response()->json([
+            'status' => 'Correcto.',
+            'message' => 'Vehiculo agregado.'], 201);
+    }
 
     public function destroy($id){
        $data = vehiculos::destroy('id','=', $id);
