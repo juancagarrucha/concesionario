@@ -1,3 +1,4 @@
+import { CategoriasService } from 'src/app/services/categorias.service';
 import { VehiculosService } from 'src/app/services/vehiculos.service';
 import { IVehiculo, ICategoria } from 'src/app/interfaces/VehiculosInterface';
 import { NavController } from '@ionic/angular';
@@ -11,22 +12,31 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./agregarvehiculo.component.scss'],
 })
 export class AgregarvehiculoComponent implements OnInit {
-
   newvehiculo: IVehiculo ={
     id: 20,
     nombre: 'otros',
     marca: 'otros',
-    //categoria: '4x4',
     Precio: 30,
     img: 'otros.png'
   }
-
+public categoria: string;
+public categorias: ICategoria;
   constructor(private cService: VehiculosService,
               private navController: NavController,
+              private CatService: CategoriasService,
               private mService: UiServiceService) { }
-ngOnInit() { }
+async ngOnInit() {
+  const categorias = await this.CatService.getCategorias();
+  //this.categorias=categorias.data;
+  if ( categorias.status == 'success' ){
+  console.log(categorias.data);
+this.categorias= categorias.data
+}
+
+ }
 
    async agregarvehiculo(fAgregarvehiculo) {
+     console.log(fAgregarvehiculo);
 
     if (fAgregarvehiculo.invalid) { return; }
       //console.log('error en datos');
